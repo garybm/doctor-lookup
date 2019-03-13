@@ -17,7 +17,7 @@ module.exports = {
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'title goes here',
+      title: 'project title goes here',
       template: './src/index.html',
       inject: 'body'
     })
@@ -33,10 +33,8 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: [
-          /node_modules/,
-          /spec/
-        ],
+        exclude: /node_modules/,
+          // /spec/,
         loader: "eslint-loader"
       },
       {
