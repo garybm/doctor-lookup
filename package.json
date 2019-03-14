@@ -1,5 +1,5 @@
 {
-  "name": "here goes the project title",
+  "name": "project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,9 +8,6 @@
     "build": "webpack --mode development",
     "start": "npm run build; webpack-dev-server --open --mode development",
     "lint": "eslint src/*.js"
-  },
-    "repository": {
-    "type": "git"
   },
   "keywords": [],
   "author": "",
