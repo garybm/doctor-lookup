@@ -14,18 +14,14 @@ $('#findDoctor').click(function() {
   let promise = doctorLookup.getDoctorByIssue(condition);
 
   promise.then(function(response) {
-    let body = JSON.parse(response);
-    console.log(body.data[0].profile.first_name);
-    let data = body.data;
-    console.log(data);
-
-    body.data.forEach(function(doctor) {
-
-
+    let doctorResponse = JSON.parse(response);
+    doctorResponse.data.forEach(doctor => {
+      console.log(doctor);
+      $('.firstName').text(`Doctor's fist name: ${doctor.profile.first_name}`);
+      $('.lastName').text(`Doctor's last name: ${doctor.profile.last_name}`);
+      $('.location').text(`Doctor's location: ${doctor.profile.practices[0].visit_address}`);
     });
 
-
-    $('.printInfo').text(`Doctor's Name ${data[0].profile.first_name}`);
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     })
