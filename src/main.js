@@ -15,19 +15,17 @@ $('#findDoctor').click(function() {
 
   promise.then(function(response) {
     let body = JSON.parse(response);
-    // console.log(body.data[1].profile.first_name);
+    console.log(body.data[0].profile.first_name);
     let data = body.data;
     console.log(data);
-    data.forEach(function(profile) {
-      cosole.log(profile);
+
+    body.data.forEach(function(doctor) {
+
+
     });
-    // console.log(body);
-    // let data = body.data[0].profile.first_name;
-    // console.log(data);
 
 
-
-    $('.printInfo').text(`Doctor's Name ${data}`);
+    $('.printInfo').text(`Doctor's Name ${data[0].profile.first_name}`);
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     })
