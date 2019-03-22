@@ -15,12 +15,19 @@ $('#findDoctor').click(function() {
 
   promise.then(function(response) {
     let body = JSON.parse(response);
-    console.log(body);
-    body.data.forEach(function(index){
-          for (let i = 0; i < index.specialties.length; i++) {
-           if (index.specialties[i].description.match(condition)) {
-             let firstName = index.profile.first_name;
-             $(".printInfo").append("<p> First Name: " + firstName + "</p>");
+    // console.log(body.data[1].profile.first_name);
+    let data = body.data;
+    console.log(data);
+    data.forEach(function(profile) {
+      cosole.log(profile);
+    });
+    // console.log(body);
+    // let data = body.data[0].profile.first_name;
+    // console.log(data);
+
+
+
+    $('.printInfo').text(`Doctor's Name ${data}`);
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     })
