@@ -5,13 +5,22 @@
   </head>
   <body>
     <div class="container">
-      <h1>Find A Doctor in Your area</h1>
-      <label for="condition">Hi. How can we help today?</label>
-      <input id="condition" type="text">
-      <button class="" id="findDoctor">Get Care</button>
-      <div class="firstName"></div>
-      <div class="lastName"></div>
-      <div class="location"></div>
+      <div class="jumbotron">
+        <img src="./assets/images/medical.png" alt="">
+        <h1 class="title">Find A Doctor in Your area</h1>
+        <label for="condition">Hi. How can we help today?</label>
+        <input id="condition" type="text" placeholder="Doctor's Name, Zipcode or Condition">
+        <button class="findDoc" id="findDoctor">Get Care</button>
+        <div id="results" class="">
+
+        <div class="well">
+            <h3 class="firstName"></h3>
+            <h3 class="newPat"></h3>
+            <h3 class="address"></h3>
+            <h3 class="addressCity"></h3>
+        </div>
+      </div>
+      </div>
     </div>
   </body>
 </html>

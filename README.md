@@ -7,7 +7,7 @@ _Author_ **Gary Bermudez**
 
 
 ### Installation
-* Clone from
+* Clone from https://github.com/garybm/doctor-lookup
 * Run `$ npm install`
 
 ### Development Specs
