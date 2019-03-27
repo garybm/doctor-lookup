@@ -14,30 +14,34 @@ $(document).ready(function() {
     let promise = doctorLookup.getDoctorByIssue(condition);
 
     promise.then(function(response) {
+      $('#results').text("");
       let doctorResponse = JSON.parse(response);
+      if(doctorResponse.data.length > 0){
         doctorResponse.data.forEach(doctor => {
+          if(doctorResponse.data.length > 0){
+            $("#results").show();
+            const name = doctor.profile.first_name + " " + doctor.profile.last_name;
+            let accept = doctor.practices[0].accepts_new_patients;
+            let acceptNew = (accept) ? "Yes" : "No";
+            const addressStreet = doctor.practices[0].visit_address.street;
+            const addressCity = doctor.practices[0].visit_address.city + ', '  + doctor.practices[0].visit_address.state + ' ' + doctor.practices[0].visit_address.zip;
+            const phone = doctor.practices[0].phones[0].number;
+            let websiteReturn = doctor.practices[0].website;
+            let website = (websiteReturn) ? websiteReturn : "No known website";
+                //NEW Doctor
+            let newDoctor = new Doctor(name, acceptNew, addressStreet, addressCity, phone, website);
+            $("#resultsMessage").show();
+            $('#results').append(newDoctor.toHTML());
+              }
 
-          $("#results").show();
-          let name = doctor.profile.first_name + " " + doctor.profile.last_name;
-          let acceptNew = doctor.practices[0].accepts_new_patients;
-          // if (acceptNew === true) {
-          //   return "This doctor is accepting new patients!"
-          // } else {
-          //   return "This doctor is not accepting new patients!"
-          // }
-          let addressStreet = doctor.practices[0].visit_address.street;
-          let addressCity = doctor.practices[0].visit_address.city + ', '  + doctor.practices[0].visit_address.state + ' ' + doctor.practices[0].visit_address.zip;
-          let phone = doctor.practices[0].phones[0].number;
-          let website = doctor.practices[0].website;
+            }, function(error) {
+              $('#result').text(`There was an error processing your request: ${error.message}`);
+            });
 
-          //NEW Doctor
-          let newDoctor = new Doctor(name, acceptNew, addressStreet, addressCity, phone, website);
-
-           $('#results').append(newDoctor.toHTML());
-
-         }, function(error) {
-           $('.showErrors').text(`There was an error processing your request: ${error.message}`);
-         });
+      } else {
+        $("#results").show();
+        $('#results').text("Sorry, your search did not return any results.");
+      }
        });
      });
      });
