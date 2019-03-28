@@ -30,9 +30,9 @@ _Author_ **Gary Bermudez**
 
 * Be sure to reload the page after a search
 
-| Behavior | Input | Output |
-|----------|-------|--------|
-* Enter a search criteria in to the form field | User inputs "acne" clicks Search condition | The application pulls results from the API related to the criteria.
+Specification | Input | Output |
+--------------|-------|--------|
+Enter a search criteria in to the form field | User inputs "acne" clicks Search condition | The application pulls results from the API related to the criteria.
 
 * Here are some screen captures of the application:
 * User input: ![application example](src/assets/images/landing.png)
